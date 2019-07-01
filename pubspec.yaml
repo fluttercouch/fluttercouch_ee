@@ -18,7 +18,7 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter:
   plugin:
-    androidPackage: it.oltrenuovefrontiere.fluttercouch
+    androidPackage: it.oltrenuovefrontiere.fluttercouch-ee
     pluginClass: FluttercouchPlugin
 
   # To add assets to your plugin package, add an assets section, like this:

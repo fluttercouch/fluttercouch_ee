@@ -5,6 +5,7 @@ import com.couchbase.lite.CouchbaseLiteException;
 import com.couchbase.lite.Database;
 import com.couchbase.lite.DatabaseConfiguration;
 import com.couchbase.lite.Document;
+import com.couchbase.lite.EncryptionKey;
 import com.couchbase.lite.Endpoint;
 import com.couchbase.lite.LogDomain;
 import com.couchbase.lite.LogLevel;
@@ -26,6 +27,7 @@ public class CBManager {
     private ReplicatorConfiguration mReplConfig;
     private Replicator mReplicator;
     private String defaultDatabase = "defaultDatabase";
+    private DatabaseConfiguration dbConfig;
 
     private CBManager() {
     }
@@ -79,6 +81,16 @@ public class CBManager {
 
     public void initDatabaseWithName(String _name) throws CouchbaseLiteException {
         DatabaseConfiguration config = new DatabaseConfiguration(FluttercouchPlugin.context);
+        if (!mDatabase.containsKey(_name)) {
+            defaultDatabase = _name;
+            // Database.setLogLevel(LogDomain.REPLICATOR, LogLevel.VERBOSE);
+            mDatabase.put(_name, new Database(_name, config));
+        }
+    }
+
+    public void initDatabaseWithEncryptionKey(String _name, String _encryptionKey) throws CouchbaseLiteException {
+        DatabaseConfiguration config = new DatabaseConfiguration(FluttercouchPlugin.context);
+        config.setEncryptionKey(new EncryptionKey(_encryptionKey));
         if (!mDatabase.containsKey(_name)) {
             defaultDatabase = _name;
             // Database.setLogLevel(LogDomain.REPLICATOR, LogLevel.VERBOSE);

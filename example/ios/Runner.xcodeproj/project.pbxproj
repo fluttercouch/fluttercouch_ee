@@ -230,9 +230,9 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh",
-				"${PODS_ROOT}/CouchbaseLite-Swift/iOS/CouchbaseLiteSwift.framework",
-				"${PODS_ROOT}/CouchbaseLite-Swift/iOS/CouchbaseLiteSwift.framework.dSYM",
-				"${PODS_ROOT}/.symlinks/flutter/ios-release/Flutter.framework",
+				"${PODS_ROOT}/CouchbaseLite-Swift-Enterprise/iOS/CouchbaseLiteSwift.framework",
+				"${PODS_ROOT}/CouchbaseLite-Swift-Enterprise/iOS/CouchbaseLiteSwift.framework.dSYM",
+				"${PODS_ROOT}/.symlinks/flutter/ios/Flutter.framework",
 				"${BUILT_PRODUCTS_DIR}/fluttercouch/fluttercouch.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";

@@ -139,6 +139,16 @@ public class FluttercouchPlugin implements MethodCallHandler {
                     result.error("errContinuous", "unable to set replication to continuous", null);
                 }
                 break;
+            case ("initDatabaseWithEncryptionKey"):
+                if (call.hasArgument("name") && call.hasArgument("encryptionKey")) {
+                    String _name = call.argument("name");
+                    String _encryptionKey = call.argument("encryptionKey");
+                try {
+                    result.success(mCbManager.initDatabaseWithEncryptionKey(_name, _encryptionKey));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    result.error("errEncryption", "unable to init the database " + _name + " with encryption key.");
+                }
             case ("initReplicator"):
                 mCbManager.initReplicator();
                 result.success("");

@@ -18,6 +18,16 @@ public class SwiftFluttercouchPlugin: NSObject, FlutterPlugin {
         let name : String = call.arguments! as! String
         self.mCbManager.initDatabaseWithName(name: name)
         result(String(name))
+    case "initDatabaseWithEncryptionKey":
+        let arguments = call.arguments! as! [String:String]
+        let name : String = arguments["name"]!
+        let encryptionKey : String = arguments["encryptionKey"]!
+        do {
+            let result = try self.mCbManager.initDatabaseWithEncryptionKey(name: name, encryptionKey: encryptionKey)
+            result(result)
+        } catch {
+            result(FlutterError.init(code: "encKey", message: "Error creating a database with encryption key", details: ""))
+        }
     case "saveDocument":
         let document = call.arguments! as! [String:Any]
         do {

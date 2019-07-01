@@ -77,6 +77,21 @@ class CBManager {
         }
     }
     
+    func initDatabaseWithEncryptionKey(name: String, encryptionKey: String) -> bool {
+        if mDatabase.keys.contains(name) {
+            defaultDatabase = name
+        } else {
+            do {
+                let config = DatabaseConfiguration();
+                config.encryptionKey = EncryptionKey.password(encryptionKey);
+                let newDatabase = try Database(name: name, config: config);
+                mDatabase[name] = newDatabase
+                defaultDatabase = name
+            } catch {
+                print("Error creating a new database with encryption key")
+            }
+    }
+    
     func setReplicatorEndpoint(endpoint: String) {
         let targetEndpoint = URLEndpoint(url: URL(string: endpoint)!)
         mReplConfig = ReplicatorConfiguration(database: getDatabase()!, target: targetEndpoint)
