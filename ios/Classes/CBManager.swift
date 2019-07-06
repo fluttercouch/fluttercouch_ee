@@ -77,7 +77,7 @@ class CBManager {
         }
     }
     
-    func initDatabaseWithEncryptionKey(name: String, encryptionKey: String) -> bool {
+    func initDatabaseWithEncryptionKey(name: String, encryptionKey: String) {
         if mDatabase.keys.contains(name) {
             defaultDatabase = name
         } else {
@@ -90,6 +90,7 @@ class CBManager {
             } catch {
                 print("Error creating a new database with encryption key")
             }
+        }
     }
     
     func setReplicatorEndpoint(endpoint: String) {

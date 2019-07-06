@@ -23,8 +23,8 @@ public class SwiftFluttercouchPlugin: NSObject, FlutterPlugin {
         let name : String = arguments["name"]!
         let encryptionKey : String = arguments["encryptionKey"]!
         do {
-            let result = try self.mCbManager.initDatabaseWithEncryptionKey(name: name, encryptionKey: encryptionKey)
-            result(result)
+            self.mCbManager.initDatabaseWithEncryptionKey(name: name, encryptionKey: encryptionKey)
+            result(String(name))
         } catch {
             result(FlutterError.init(code: "encKey", message: "Error creating a database with encryption key", details: ""))
         }

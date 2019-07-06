@@ -20,10 +20,10 @@ abstract class Fluttercouch {
     }
   }
 
-  Future<bool> initDatabaseWithEncryptionKey(
+  Future<String> initDatabaseWithEncryptionKey(
       String _name, String _encryptionKey) async {
     try {
-      final bool result = await _methodChannel.invokeMethod(
+      final String result = await _methodChannel.invokeMethod(
           'initDatabaseWithEncryptionKey',
           <String, String>{"name": _name, "encryptionKey": _encryptionKey});
       return result;
